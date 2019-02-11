@@ -1,0 +1,32 @@
+<section *ngIf="usersData" class="mat-typography">
+  <h1 *ngIf="usersData.users.length === 0">There are no user actions yet, go on and add one!</h1>
+</section>
+
+<mat-accordion *ngIf="usersData">
+  <mat-expansion-panel *ngFor="let user of usersData.users">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{user.name}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list>
+      <mat-list-item *ngFor="let action of user.actions">
+        <p matLine>
+          Message - {{action.message}}
+        </p>
+        <p matLine>
+          SliderValue - {{action.sliderValue}}
+        </p>
+        <mat-icon *ngIf="action._id">sync</mat-icon>
+      </mat-list-item>
+    </mat-list>
+
+  </mat-expansion-panel>
+  <section class="mat-typography">
+      <h3>Last updated at {{usersData.updated | date:'medium'}}, from {{usersData.source === 0 ? 'Local' : 'Server'}}.</h3>
+      <button mat-flat-button color="primary" (click)="syncUsers()">
+          <mat-icon>sync</mat-icon>
+          Sync Users
+        </button>
+    </section>
+</mat-accordion>

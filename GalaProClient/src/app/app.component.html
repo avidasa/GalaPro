@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <span>{{title}}</span>
+  <span style="flex: 1 1 auto;"></span>
+  <span>
+    <button mat-flat-button routerLink="/action" color="primary">
+      <mat-icon>add</mat-icon>
+      Add
+    </button>
+    <button mat-flat-button routerLink="/users" color="primary">
+      <mat-icon>list</mat-icon>
+      Users
+    </button>
+  </span>
+</mat-toolbar>
+<router-outlet></router-outlet>
